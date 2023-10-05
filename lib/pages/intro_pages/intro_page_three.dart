@@ -33,7 +33,7 @@ class _IntroPageThreeState extends State<IntroPageThree>
         children: [
           const Text(
             "Swift and Secure Transactions",
-            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold,letterSpacing: 2),
+            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold,letterSpacing: 2,color: Colors.black),
             textAlign: TextAlign.center,
           ),
           Lottie.asset(

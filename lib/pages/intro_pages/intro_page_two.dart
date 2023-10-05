@@ -34,10 +34,10 @@ class _IntroPageTwoState extends State<IntroPageTwo>
           const Text(
             "Your Digital Payment Companion",
             style: TextStyle(
-              fontSize: 26,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 2,
-            ),
+                fontSize: 26,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 2,
+                color: Colors.black),
             textAlign: TextAlign.center,
           ),
           Lottie.asset(

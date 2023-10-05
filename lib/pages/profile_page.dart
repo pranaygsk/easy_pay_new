@@ -1,4 +1,9 @@
+import 'package:easy_pay_new/components/profile_text_field.dart';
 import 'package:flutter/material.dart';
+import '../components/update_button.dart';
+
+double width = 0.0;
+double height = 0.0;
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -16,12 +21,15 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+    width = MediaQuery.of(context).size.width;
+    height = MediaQuery.of(context).size.height;
     return Container(
       margin: const EdgeInsets.only(top: 20, left: 20, right: 20),
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
+      width: width,
+      height: height,
       color: const Color(0xFF161622),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const Text(
             "Profile",
@@ -57,20 +65,61 @@ class _ProfilePageState extends State<ProfilePage> {
               color: Colors.grey.shade600,
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 50),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                children: [
-                  Text(
-                    "First Name",
-                    style: TextStyle(color: Colors.grey.shade400),
-                  ),
-
-                ],
-              )
+              ProfileTextField(
+                  controller: firstNameController,
+                  hintText: "First Name",
+                  obscureText: false,
+                  width: width / 2.5),
+              const SizedBox(
+                width: 10,
+              ),
+              ProfileTextField(
+                  controller: lastNameController,
+                  hintText: "Last Name",
+                  obscureText: false,
+                  width: width / 2.5)
             ],
-          )
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          ProfileTextField(
+              controller: countryController,
+              hintText: "Country",
+              obscureText: false,
+              width: width),
+          const SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ProfileTextField(
+                  controller: cityController,
+                  hintText: "City",
+                  obscureText: false,
+                  width: width / 2.5),
+              const SizedBox(
+                width: 10,
+              ),
+              ProfileTextField(
+                  controller: zipCodeController,
+                  hintText: "Zip Code",
+                  obscureText: false,
+                  width: width / 2.5),
+            ],
+          ),
+          const SizedBox(
+            height: 80,
+          ),
+          UpdateButton(
+            onTap: () {},
+            btnText: 'Update Profile',
+          ),
         ],
       ),
     );

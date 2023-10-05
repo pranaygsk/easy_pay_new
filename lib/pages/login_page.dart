@@ -39,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
                 //Welcome Back Text
                 Text(
                   "Welcome back you\'ve been missed!",
-                  style: TextStyle(color: Colors.grey[700], fontSize: 16),
+                  style: TextStyle(color: Colors.grey[700], fontSize: 18),
                 ),
                 const SizedBox(
                   height: 25,
@@ -80,7 +80,10 @@ class _LoginPageState extends State<LoginPage> {
                   height: 25,
                 ),
                 //Sign In Button
-                MyButton(onTap: signUserIn, signText: 'Sign In',),
+                MyButton(
+                  onTap: signUserIn,
+                  signText: 'Sign In',
+                ),
                 const SizedBox(
                   height: 30,
                 ),
@@ -120,10 +123,12 @@ class _LoginPageState extends State<LoginPage> {
                     SquareTile(imagePath: "assets/logos/facebook.png"),
                   ],
                 ),
-                const SizedBox(height: 25,),
+                const SizedBox(
+                  height: 25,
+                ),
                 //Not a member? register now
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Navigator.popAndPushNamed(context, "/registerpage");
                   },
                   child: const Row(

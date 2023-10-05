@@ -6,7 +6,7 @@ class ContactTile extends StatelessWidget {
   final int phoneNum;
   final ImageProvider? imagePath;
 
-  ContactTile({
+  const ContactTile({
     super.key,
     required this.name,
     required this.email,
@@ -30,7 +30,8 @@ class ContactTile extends StatelessWidget {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
-                image: imagePath ?? const AssetImage('assets/images/profile_pic.png'),
+                image: imagePath ??
+                    const AssetImage('assets/images/profile_pic.png'),
                 // Replace with your image
                 fit: BoxFit.cover,
               ),
@@ -61,17 +62,32 @@ class ContactTile extends StatelessWidget {
           ),
           const SizedBox(width: 16.0), // Spacing between text and icons
           // Right Side Icons
-          const Row(
+          Row(
             children: [
-              Icon(
-                Icons.arrow_downward_outlined,
-                color: Colors.green,
-                size: 30.0,
+              Container(
+                padding: const EdgeInsets.all(5.0),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.black),
+                child: const Icon(
+                  Icons.arrow_downward_outlined,
+                  color: Colors.green,
+                  size: 30.0,
+                ),
               ),
-              Icon(
-                Icons.arrow_upward_outlined,
-                color: Colors.red,
-                size: 30.0,
+              const SizedBox(
+                width: 5,
+              ),
+              Container(
+                padding: const EdgeInsets.all(5.0),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.black),
+                child: const Icon(
+                  Icons.arrow_upward_outlined,
+                  color: Colors.red,
+                  size: 30.0,
+                ),
               ),
             ],
           ),

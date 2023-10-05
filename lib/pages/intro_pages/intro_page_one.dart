@@ -33,7 +33,7 @@ class _IntroPageOneState extends State<IntroPageOne>
         children: [
           const Text(
             "Welcome to Easy Pay!",
-            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold,letterSpacing: 2,),
+            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold,letterSpacing: 2,color: Colors.black),
           ),
           const SizedBox(height: 50,),
           Lottie.asset(

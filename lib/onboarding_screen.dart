@@ -42,31 +42,39 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 //Skip
-                GestureDetector(
-                  onTap: () {
-                    _controller.jumpToPage(2);
-                  },
-                  child: const Text(
-                    "Skip",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
+                onLastPage
+                    ? const Text("          ")
+                    : GestureDetector(
+                        onTap: () {
+                          _controller.jumpToPage(2);
+                        },
+                        child: const Text(
+                          "Skip",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              color: Colors.black),
+                        ),
+                      ),
                 //Dot Indicator
-                SmoothPageIndicator(controller: _controller, count: 3,),
+                SmoothPageIndicator(
+                  controller: _controller,
+                  count: 3,
+                ),
                 //Next or Done
                 onLastPage
                     ? GestureDetector(
                         onTap: () {
                           Navigator.popAndPushNamed(context, '/loginpage');
                         },
-                        child: const Text("Done",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            )),
+                        child: const Text(
+                          "Done",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
                       )
                     : GestureDetector(
                         onTap: () {
@@ -82,6 +90,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
+                            color: Colors.black,
                           ),
                         ),
                       ),
