@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:easy_pay_new/components/contact_tile.dart';
 import 'package:easy_pay_new/models/contacts_model.dart';
 import 'package:flutter/material.dart';
@@ -41,13 +43,14 @@ class _ContactsPageState extends State<ContactsPage> {
             width: MediaQuery.of(context).size.width,
             height: 60,
             decoration: BoxDecoration(
-                color: const Color(0xFF161622),
-                border: const Border.fromBorderSide(
-                  BorderSide(
-                    color: Colors.grey,
-                  ),
+              color: const Color(0xFF161622),
+              border: const Border.fromBorderSide(
+                BorderSide(
+                  color: Colors.grey,
                 ),
-                borderRadius: BorderRadius.circular(15)),
+              ),
+              borderRadius: BorderRadius.circular(15),
+            ),
             child: const Row(
               children: [
                 SizedBox(
@@ -63,7 +66,7 @@ class _ContactsPageState extends State<ContactsPage> {
                 Text(
                   "Search",
                   style: TextStyle(color: Colors.grey, fontSize: 16),
-                )
+                ),
               ],
             ),
           ),
@@ -79,11 +82,105 @@ class _ContactsPageState extends State<ContactsPage> {
                     name: contacts[index].name,
                     email: contacts[index].email,
                     phoneNum: contacts[index].phoneNumber,
+                    onReceivePressed: () {
+                      _showRequestDialog(context);
+                    },
+                    onSendPressed: () {
+                      _showSendDialog(context);
+                    },
                   );
                 }),
           ),
         ],
       ),
+    );
+  }
+
+  void _showSendDialog(BuildContext context) {
+    TextEditingController amountController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Send Money'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: amountController,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(labelText: 'Enter Amount'),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  // Handle the send button action here
+                  Navigator.of(context).pop(); // Close the dialog
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('Send', style: TextStyle(color: Colors.red)),
+                    Transform.rotate(
+                        angle: 45 * pi / 180,
+                        child: const Icon(
+                          Icons.arrow_upward_outlined,
+                          color: Colors.red,
+                        ))
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  void _showRequestDialog(BuildContext context) {
+    TextEditingController amountController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Receive Money'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: amountController,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(labelText: 'Enter Amount'),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  // Handle the send button action here
+                  Navigator.of(context).pop(); // Close the dialog
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('Request', style: TextStyle(color: Colors.green)),
+                    Transform.rotate(
+                        angle: 45 * pi / 180,
+                        child: const Icon(
+                          Icons.arrow_downward_outlined,
+                          color: Colors.green,
+                        ))
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

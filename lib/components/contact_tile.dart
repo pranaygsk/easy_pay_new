@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class ContactTile extends StatelessWidget {
@@ -5,6 +7,8 @@ class ContactTile extends StatelessWidget {
   final String email;
   final int phoneNum;
   final ImageProvider? imagePath;
+  final void Function()? onReceivePressed;
+  final void Function()? onSendPressed;
 
   const ContactTile({
     super.key,
@@ -12,6 +16,8 @@ class ContactTile extends StatelessWidget {
     required this.email,
     required this.phoneNum,
     this.imagePath,
+    this.onReceivePressed,
+    this.onSendPressed,
   });
 
   @override
@@ -64,29 +70,41 @@ class ContactTile extends StatelessWidget {
           // Right Side Icons
           Row(
             children: [
-              Container(
-                padding: const EdgeInsets.all(5.0),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.black),
-                child: const Icon(
-                  Icons.arrow_downward_outlined,
-                  color: Colors.green,
-                  size: 30.0,
+              GestureDetector(
+                onTap: onReceivePressed,
+                child: Container(
+                  padding: const EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.black),
+                  child: Transform.rotate(
+                    angle: 45 * pi / 180,
+                    child: const Icon(
+                      Icons.arrow_downward_outlined,
+                      color: Colors.green,
+                      size: 30.0,
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(
                 width: 5,
               ),
-              Container(
-                padding: const EdgeInsets.all(5.0),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.black),
-                child: const Icon(
-                  Icons.arrow_upward_outlined,
-                  color: Colors.red,
-                  size: 30.0,
+              GestureDetector(
+                onTap: onSendPressed,
+                child: Container(
+                  padding: const EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Colors.black),
+                  child: Transform.rotate(
+                    angle: 45 * pi / 180,
+                    child: const Icon(
+                      Icons.arrow_upward_outlined,
+                      color: Colors.red,
+                      size: 30.0,
+                    ),
+                  ),
                 ),
               ),
             ],

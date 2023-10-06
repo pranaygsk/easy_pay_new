@@ -13,7 +13,7 @@ class _TransactionsPageState extends State<TransactionsPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 20,left: 20,right: 20),
+      margin: const EdgeInsets.only(top: 20, left: 20, right: 20),
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       color: const Color(0xFF161622),
@@ -21,33 +21,43 @@ class _TransactionsPageState extends State<TransactionsPage> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           //top bar for back button and heading
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                width: 40,
-                height: 40,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  color: Colors.grey.shade800,
-                ),
-                child: const Icon(
-                  Icons.arrow_back,
-                  color: Colors.white,
-                ),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.start,
+          //   children: [
+          //     Container(
+          //       width: 40,
+          //       height: 40,
+          //       decoration: BoxDecoration(
+          //         borderRadius: BorderRadius.circular(30),
+          //         color: Colors.grey.shade800,
+          //       ),
+          //       child: const Icon(
+          //         Icons.arrow_back,
+          //         color: Colors.white,
+          //       ),
+          //     ),
+          //     const SizedBox(
+          //       width: 70,
+          //     ),
+          //     Text(
+          //       "Transactions",
+          //       style: TextStyle(
+          //         color: Colors.grey.shade400,
+          //         fontSize: 22,
+          //         fontWeight: FontWeight.w600,
+          //       ),
+          //     ),
+          //   ],
+          // ),
+          Center(
+            child: Text(
+              "Transactions",
+              style: TextStyle(
+                color: Colors.grey.shade400,
+                fontSize: 22,
+                fontWeight: FontWeight.w600,
               ),
-              const SizedBox(
-                width: 70,
-              ),
-              Text(
-                "Transactions",
-                style: TextStyle(
-                  color: Colors.grey.shade400,
-                  fontSize: 22,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ],
+            ),
           ),
           const SizedBox(
             height: 30,
@@ -128,9 +138,15 @@ class _TransactionsPageState extends State<TransactionsPage> {
               ),
             ],
           ),
-          const SizedBox(height: 20,),
-          const Divider(thickness: 0.5,),
-          const SizedBox(height: 20,),
+          const SizedBox(
+            height: 20,
+          ),
+          const Divider(
+            thickness: 0.5,
+          ),
+          const SizedBox(
+            height: 20,
+          ),
 
           //Transactions
           Expanded(
@@ -210,7 +226,6 @@ class _TransactionsPageState extends State<TransactionsPage> {
               itemCount: transactions.length,
             ),
           ),
-
         ],
       ),
     );
